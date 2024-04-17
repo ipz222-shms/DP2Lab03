@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AdapterLibrary\AdapterLibrary.csproj" />
+      <ProjectReference Include="..\BridgeLibrary\BridgeLibrary.csproj" />
+      <ProjectReference Include="..\CompositeLibrary\CompositeLibrary.csproj" />
+      <ProjectReference Include="..\DecoratorLibrary\DecoratorLibrary.csproj" />
+      <ProjectReference Include="..\FlyweightLibrary\FlyweightLibrary.csproj" />
+      <ProjectReference Include="..\ProxyLibrary\ProxyLibrary.csproj" />
+    </ItemGroup>
+
+</Project>
