@@ -1,4 +1,5 @@
-﻿using ConsoleApp;
+﻿using AdapterLibrary;
+using ConsoleApp;
 
 while (true)
 {
@@ -31,6 +32,17 @@ while (true)
     switch ((Scenario)selectedScenario)
     {
         case Scenario.Adapter:
+            Logger logger = new();
+            logger.Log("Log example.");
+            logger.Error("Error example.");
+            logger.Warn("Warn example.");
+
+            LoggerFile loggerFile = new(logger);
+            loggerFile.Log("Log example.");
+            loggerFile.Error("Error example.");
+            loggerFile.Warn("Warn example.");
+            
+            break;
         case Scenario.Decorator:
         case Scenario.Bridge:
         case Scenario.Proxy:
