@@ -37,7 +37,7 @@ while (true)
             logger.Error("Error example.");
             logger.Warn("Warn example.");
 
-            LoggerFile loggerFile = new(logger);
+            LoggerFile loggerFile = new(logger, "../../../log.txt");
             loggerFile.Log("Log example.");
             loggerFile.Error("Error example.");
             loggerFile.Warn("Warn example.");
