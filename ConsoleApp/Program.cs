@@ -1,5 +1,6 @@
 ﻿using AdapterLibrary;
 using ConsoleApp;
+using DecoratorLibrary;
 
 while (true)
 {
@@ -44,6 +45,25 @@ while (true)
             
             break;
         case Scenario.Decorator:
+            IHero mage = new Mage();
+            mage = new Weapon(mage, "Broom", 1);
+            mage = new Armor(mage, "Robe", 1);
+            mage = new Artifact(mage, "Daedric", 25);
+            Console.WriteLine($"Mage's Items: {string.Join(", ", mage.GetItems())}");
+
+            IHero warrior = new Warrior();
+            warrior = new Weapon(warrior, "Sword", 12);
+            warrior = new Weapon(warrior, "Shield", 4);
+            warrior = new Armor(warrior, "Light", 10);
+            Console.WriteLine($"Warrior's Items: {string.Join(", ", warrior.GetItems())}");
+
+            IHero palladin = new Palladin();
+            palladin = new Armor(palladin, "Heavy", 30);
+            palladin = new Weapon(palladin, "Two handed sword", 20);
+            palladin = new Artifact(palladin, "Deffense Stone", 7);
+            Console.WriteLine($"Palladin's Items: {string.Join(", ", palladin.GetItems())}");
+            
+            break;
         case Scenario.Bridge:
         case Scenario.Proxy:
         case Scenario.Composite:
