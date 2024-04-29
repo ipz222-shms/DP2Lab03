@@ -1,4 +1,5 @@
 ﻿using AdapterLibrary;
+using BridgeLibrary;
 using ConsoleApp;
 using DecoratorLibrary;
 
@@ -65,6 +66,21 @@ while (true)
             
             break;
         case Scenario.Bridge:
+            List<Shape> shapes =
+            [
+                new Circle(new ConsoleTextRender(), 1),
+                new Circle(new ConsoleASCIIRender(), 7),
+                new Triangle(new ConsoleASCIIRender(), 4),
+                new Square(new ConsoleASCIIRender(), 8)
+            ];
+
+            foreach (var shape in shapes)
+            {
+                shape.Rasterize();
+                shape.Vectorize();
+            }
+            
+            break;
         case Scenario.Proxy:
         case Scenario.Composite:
         case Scenario.Flyweight:
