@@ -2,6 +2,7 @@
 using BridgeLibrary;
 using ConsoleApp;
 using DecoratorLibrary;
+using ProxyLibrary;
 
 while (true)
 {
@@ -82,6 +83,27 @@ while (true)
             
             break;
         case Scenario.Proxy:
+            Console.WriteLine("Regular SmartTextReader:");
+            ISmartText str = new SmartTextReader();
+            var result = str.ReadFile("../../../ProxyReadFile.txt");
+            Console.WriteLine($"Lines in result: {result.Count()}");
+            
+            Console.WriteLine("\nSmartTextChecker > SmartTextReader:");
+            str = new SmartTextChecker(str);
+            result = str.ReadFile("../../../ProxyReadFile.txt");
+            Console.WriteLine($"Lines in result: {result.Count()}");
+
+            Console.WriteLine("\nSmartTextReaderLocker (success) > SmartTextChecker > SmartTextReader:");
+            ISmartText strWhiteList = new SmartTextReaderLocker(str, @"^\.\.\/\.\.\/\.\.\/.*\.txt$", true);
+            result = strWhiteList.ReadFile("../../../ProxyReadFile.txt");
+            Console.WriteLine($"Lines in result: {result.Count()}");
+            
+            Console.WriteLine("\nSmartTextReaderLocker (fail) > SmartTextChecker > SmartTextReader:");
+            str = new SmartTextReaderLocker(str, @"^\.\.\/\.\.\/\.\.\/.*$");
+            result = str.ReadFile("../../../ProxyReadFile.txt");
+            Console.WriteLine($"Lines in result: {result.Count()}");
+            
+            break;
         case Scenario.Composite:
         case Scenario.Flyweight:
         default:
