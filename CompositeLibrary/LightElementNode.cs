@@ -7,11 +7,11 @@ public class LightElementNode(string tag) : ILightNode
     private readonly List<string> _classes = [];
     private readonly List<ILightNode> _children = [];
     public string Tag { get; set; } = tag;
-    public bool IsSingle { get; set; } = false;
-    public string Display { get; set; } = "block";
+    public bool IsSingle { get; set; }
+    public string? Display { get; set; }
     public IEnumerable<string> Classes => new List<string>(_classes);
     public IEnumerable<ILightNode> Children => new List<ILightNode>(_children);
-    public int ChildrenCount => _children.Count();
+    public int ChildrenCount => _children.Count;
 
     public void AppendChild(ILightNode child)
     {
@@ -44,7 +44,10 @@ public class LightElementNode(string tag) : ILightNode
 
     public string Render()
     {
-        StringBuilder sb = new($"<{Tag} style=\"display:{Display};\"");
+        StringBuilder sb = new($"<{Tag}");
+        
+        if (Display != null)
+            sb.Append($" style=\"display:{Display};\"");
         
         if (_classes.Count != 0)
             sb.Append($" class=\"{string.Join(' ', _classes)}\"");

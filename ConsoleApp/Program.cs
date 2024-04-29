@@ -108,10 +108,10 @@ while (true)
         case Scenario.Composite:
             LightElementNode html = new("html");
             
-            LightElementNode header = new("header");
-            html.AppendChild(header);
+            LightElementNode head = new("head");
+            html.AppendChild(head);
             LightElementNode title = new("title");
-            header.AppendChild(title);
+            head.AppendChild(title);
             title.AppendChild(new LightTextNode("Hello World!"));
 
             LightElementNode body = new("body");
@@ -160,6 +160,8 @@ while (true)
             
             break;
         case Scenario.Flyweight:
+            
+            break;
         default:
             throw new NotImplementedException();
     }
