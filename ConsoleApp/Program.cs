@@ -1,5 +1,6 @@
 ﻿using AdapterLibrary;
 using BridgeLibrary;
+using CompositeLibrary;
 using ConsoleApp;
 using DecoratorLibrary;
 using ProxyLibrary;
@@ -105,6 +106,59 @@ while (true)
             
             break;
         case Scenario.Composite:
+            LightElementNode html = new("html");
+            
+            LightElementNode header = new("header");
+            html.AppendChild(header);
+            LightElementNode title = new("title");
+            header.AppendChild(title);
+            title.AppendChild(new LightTextNode("Hello World!"));
+
+            LightElementNode body = new("body");
+            html.AppendChild(body);
+
+            LightElementNode h1 = new("h1")
+            {
+                Display = "inline-block"
+            };
+            body.AppendChild(h1);
+            h1.AppendChild(new LightTextNode("Hello World!"));
+            
+            body.AppendChild(new LightElementNode("br")
+            {
+                IsSingle = true
+            });
+
+            LightElementNode table = new("table");
+            body.AppendChild(table);
+            LightElementNode tbody = new("tbody")
+            {
+                Display = "table-row-group"
+            };
+            table.AppendChild(tbody);
+            for (var r = 1; r <= 3; r++)
+            {
+                LightElementNode tr = new("tr")
+                {
+                    Display = "table-row"
+                };
+                for (var c = 1; c <= 4; c++)
+                {
+                    LightElementNode td = new("td")
+                    {
+                        Display = "table-cell"
+                    };
+                    td.AppendChild(new LightTextNode($"{r + c}"));
+                    tr.AppendChild(td);
+                }
+                tbody.AppendChild(tr);
+            }
+            
+            table.AddClass("numbers-table");
+            
+            Console.WriteLine(html.OuterHTML());
+            
+            break;
         case Scenario.Flyweight:
         default:
             throw new NotImplementedException();

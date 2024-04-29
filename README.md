@@ -11,7 +11,7 @@ TODO:
 - [x] [Завдання 2](#user-content-завдання-2)
 - [x] [Завдання 3](#user-content-завдання-3)
 - [x] [Завдання 4](#user-content-завдання-4)
-- [ ] [Завдання 5](#user-content-завдання-5)
+- [x] [Завдання 5](#user-content-завдання-5)
 - [ ] [Завдання 6](#user-content-завдання-6)
 
 ---
@@ -85,17 +85,20 @@ TODO:
 ## [Завдання 5](CompositeLibrary)
 
 Компонувальник.
-
+ 
 1. Вам потрібно створити власну мову розмітки `LightHTML`.
-2. Кожен елемент розмітки має наслідувати клас `LightNode`.
-3. Створіть два дочірніх класи від LightNode: `LightElementNode`, `LightTextNode`.
+2. Кожен елемент розмітки має наслідувати клас [`LightNode`](CompositeLibrary/ILightNode.cs).
+3. Створіть два дочірніх класи від LightNode: [`LightElementNode`](CompositeLibrary/LightElementNode.cs),
+   [`LightTextNode`](CompositeLibrary/LightTextNode.cs).
 4. `LightTextNode` може містити лише текст.
-5. `LightElementNode` може містити будь-які LightNode.
-   `LightElementNode` повинен мати інформацію про назву тега, його
-   тип відображення (блочний чи рядковий), тип закриття (одиничний
-   тег, як `<img/>` чи з закриваючим тегом) список CSS класів,
-   кількість дочірніх елементів, а також має бути можливість виводити
-   на екран його outerHTML і innerHTML.
+5. `LightElementNode` може містити [будь-які LightNode](CompositeLibrary/LightElementNode.cs#L8).
+   `LightElementNode` повинен мати інформацію про [назву тега](CompositeLibrary/LightElementNode.cs#L9), його
+   [тип відображення](CompositeLibrary/LightElementNode.cs#L11) (блочний чи рядковий), 
+   [тип закриття](CompositeLibrary/LightElementNode.cs#L10) (одиничний тег, як `<img/>` чи з закриваючим тегом)
+   [список CSS класів](CompositeLibrary/LightElementNode.cs#L7),
+   [кількість дочірніх елементів](CompositeLibrary/LightElementNode.cs#L14), а також має бути можливість виводити
+   на екран його [outerHTML](CompositeLibrary/LightElementNode.cs#L43)
+   і [innerHTML](CompositeLibrary/LightElementNode.cs#L35).
 6. За допомогою своєї мови розмітки виведіть в консоль
    елемент сторінки на Ваш вибір (наприклад якусь таблицю, список
    тощо).
