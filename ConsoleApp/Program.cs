@@ -2,6 +2,7 @@
 using BridgeLibrary;
 using CompositeLibrary;
 using ConsoleApp;
+using ConsoleApp.SizeCalculator;
 using DecoratorLibrary;
 using ProxyLibrary;
 
@@ -160,6 +161,16 @@ while (true)
             
             break;
         case Scenario.Flyweight:
+            const string book = "../../../MobyDickBook.txt";
+            
+            IProvider testProvider = new ClassicProvider();
+            var classicResult = testProvider.Test(book);
+            Console.WriteLine($"Classic composition size: {classicResult} bytes ~ {classicResult / 1e+6} Mb");
+
+            // Usage example can be found at FlyweightProvider
+            testProvider = new FlyweightProvider();
+            var flyweightResult = testProvider.Test(book);
+            Console.WriteLine($"Flyweight composition size: {flyweightResult} bytes ~ {flyweightResult / 1e+6} Mb");
             
             break;
         default:
