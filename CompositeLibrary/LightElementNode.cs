@@ -61,7 +61,7 @@ public class LightElementNode(string tag) : ILightNode
                 sb.Append($"\n</{Tag}>");
             }
             else
-                sb.Append($"</{Tag}>");
+                sb.Append($"></{Tag}>");
         }
         else
             sb.Append(" />");
